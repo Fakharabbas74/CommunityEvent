@@ -1,0 +1,33 @@
+CREATE TABLE `events` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `event_date` date NOT NULL,
+  `event_time` time NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `users` (`username`, `password`, `email`) VALUES
+('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin@community.org');
+
+INSERT INTO `events` (`title`, `description`, `event_date`, `event_time`, `location`, `category`, `image_path`) VALUES
+('Community Gardening Workshop', 'Learn how to start your own garden with our expert gardeners. All materials provided.', '2023-11-15', '10:00:00', 'Community Center, Room 101', 'Workshop', 'gardening.jpg'),
+('Local Art Exhibition', 'Showcasing works from local artists. Free entry with optional donations.', '2023-11-20', '18:00:00', 'Town Hall Gallery', 'Exhibition', 'art.jpg'),
+('Yoga in the Park', 'Beginner-friendly yoga session in the beautiful Central Park. Bring your own mat.', '2023-11-25', '08:30:00', 'Central Park, West Entrance', 'Fitness', 'yoga.jpg'),
+('Book Club Meeting', 'Discussion of this month\'s selected novel: "The Midnight Library" by Matt Haig', '2023-12-05', '19:00:00', 'Public Library, Meeting Room 2', 'Book Club', 'books.jpg'),
+('Tech Talk: Web Development', 'Introduction to modern web development for beginners.', '2023-12-10', '14:00:00', 'Community Center, Computer Lab', 'Workshop', 'webdev.jpg');
